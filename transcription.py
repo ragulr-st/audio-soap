@@ -1,0 +1,17 @@
+import os
+import tempfile
+import whisper
+
+model = whisper.load_model("base")
+
+async def transcribe_audio(file):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
+        contents = await file.read()
+        tmp.write(contents)
+        tmp_path = tmp.name
+
+    try:
+        result = model.transcribe(tmp_path)
+        return result['text']
+    finally:
+        os.remove(tmp_path)

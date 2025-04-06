@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+python-multipart
+openai
+openai-whisper  # ✅ this is the correct one
+

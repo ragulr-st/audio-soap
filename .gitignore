@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.log
+
+# Virtual Environments
+venv/
+env/
+
+# VSCode/IDE files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Docker
+*.db
+*.sqlite3
+docker-compose.override.yml
+
+# Ignore audio files (optional if you're uploading)
+*.mp3
+*.wav
+
+# FastAPI/Swagger cache
+.openapi/
+*.json
+
+# Environment & Secrets
+.env
+.env.*
+
+# Python dependency caches
+pip-wheel-metadata/
+pip-log.txt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Test coverage
+htmlcov/
+.coverage
+
+# Others
+dist/
+build/
+
