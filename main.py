@@ -2,9 +2,17 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel, Field
 from transcription import transcribe_audio
 from soap_generator import generate_soap_note
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-
+# 👇 Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Your frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class TranscriptRequest(BaseModel):
     transcript: str = Field(
         ..., 
@@ -35,7 +43,6 @@ async def audio_to_soap(file: UploadFile = File(...)):
 
     # Step 1: Transcribe the audio
     transcript = await transcribe_audio(file)
-
     # Step 2: Generate the SOAP note
     soap_note = generate_soap_note(transcript)
 
